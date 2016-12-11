@@ -1,4 +1,4 @@
-# -*- encoding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 from flask import Flask, request
 from flask_restful import Resource, Api
@@ -10,7 +10,6 @@ class HelloWorld(Resource):
     """
     curl http://localhost:5000/
     """
-
     def get(self):
         return {'data': 'world'}
 
@@ -20,7 +19,6 @@ class TodoSimple(Resource):
     """
     jak mam "zavolat", spis namapovat get?
     """
-
     def get(self, todo_id):
         return {todo_id: todos[todo_id]}
 
@@ -37,14 +35,15 @@ class Moje(Resource):
     zkousim tam naprat nejaky argumenty?
     curl http://localhost:5000/coze13 -d "data=asd fe  dssd&nechapu=asdsad" -X PUT
     """
-
     def put(self, coze_id, nechapu_id):
         return {
             'moje': request.form['data'],
             'wtf': request.form['data2']
         }
 
-api.add_resource(HelloWorld, '/')
+# definovani endpointu
+
+api.add_resource(HelloWorld, '/', '/hello')
 api.add_resource(TodoSimple, '/<string:todo_id>')
 
 # tohle nejde
