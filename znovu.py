@@ -18,7 +18,13 @@ def volani_s_argumentem(id):
     """nefunguje nejvic, vraci to, ze nema zadnou
     response od serveru
     """
-    return 'volam api s argumentem = ', id
+
+    # toto probehne korektne
+    print 'volam api s argumentem = ', id
+
+    # jen tady se nic nevrati
+    # return 'volam api s argumentem = ', id
+    return {'data': 'id {0}'.format(id)}
 
 
 @app.route('/volej2/<nechapuid>/')
